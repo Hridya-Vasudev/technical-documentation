@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Document</title>
+    <!-- <link rel="stylesheets" href="style.css"> -->
+    <style>
+        .container
+        {
+            display: grid;
+           grid-template-columns: minmax(300px , auto)1fr;   
+           grid-template-areas: "navbar mainContent";
+           grid-gap: 20px;
+        }
+        nav#navbar {
+        grid-area: navbar;
+        position: fixed;   
+        }
+        nav#navbar a {
+         display: block;
+         border: 1px solid black;
+         padding: 5px;
+        margin: 10px 0;
+        text-decoration: none;
+        color: black;
+       } 
+       main#main-doc {
+       grid-area: mainContent;
+       }
+       header {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+       code {
+    background-color: #CCC;
+    display: block;
+    padding: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav id="navbar">
+            <header style="font-size: 20px; color:blue; font-weight: bold; font-family: sans-serif;">Documentation menu</header>
+            <ul>
+            <li><a href="#intro" class="nav-link">Introduction</a></li>
+             <li><a href="#constants" class="nav-link">C Constants</a></li>
+             <li><a href="#operators" class="nav-link">C Operators</a></li>
+             <li><a href="#arrays" class="nav-link">C Arrays</a></li>
+             <li><a href="#string" class="nav-link">C Strings</a></li>
+             <li><a href="#pointers" class="nav-link">C Pointers</a></li>
+             </ul>
+        </nav>
+        <main id="main-doc">
+            <section class="main-section" id="intro">
+            <header>What is C</header>
+            <p>
+                C is a general-purpose programming language created by Dennis Ritchie at the Bell Laboratories in 1972.
+                It is a very popular language, despite being old.
+                C is strongly associated with UNIX, as it was developed to write the UNIX operating system.
+               <p> <b>Why Learn C?</b><br>
+                It is one of the most popular programming language in the world
+                If you know C, you will have no problem learning other popular programming languages such as Java, Python, C++, C#, etc, as the syntax is similar
+                C is very fast, compared to other programming languages, like Java and Python
+                C is very versatile; it can be used in both applications and technologies</p>
+            </p>
+            </section>
+            <section class="main-section" id="constants">
+                <header>C Constants</header>
+                <p>
+                    When you don't want others (or yourself) to override existing variable values, use the const keyword (this will declare the variable as "constant", which means unchangeable and read-only):<br>
+                    <code>#include &lt; stdio.h &gt;<br>
+
+                        int main() {<br>
+                          const int myNum = 15;<br>
+                          myNum = 10;<br>
+                          
+                          printf("%d", myNum);<br>
+                          return 0;<br>
+                        }</code>
+                    <b>Notes On Constants</b><br>
+                    When you declare a constant variable, it must be assigned with a value:
+                    <b>Good Practice</b>
+                    Another thing about constant variables, is that it is considered good practice to declare them with uppercase. It is not required, but useful for code readability and common for C programmers:<br>
+                </p>
+            </section>
+            <section class="main-section" id="operators">
+                <header>C Operators</header>
+                <p>
+                    <b>Operators</b>
+                    Operators are used to perform operations on variables and values.
+                    In the example below, we use the + operator to add together two values:<br>
+                    <code>
+                        #include &lt;stdio.h &gt;<br>
+
+                            int main() {<br>
+                              int myNum = 100 + 50;<br>
+                              printf("%d", myNum);<br>
+                              return 0;<br>
+                            }
+                    </code>
+                    Although the + operator is often used to add together two values, like in the example above, it can also be used to add together a variable and a value, or a variable and another variable:<br>
+                    <code>#include &lt;stdio.h&gt;
+
+                        int main() {<br>
+                          int sum1 = 100 + 50;        // 150 (100 + 50)<br>
+                          int sum2 = sum1 + 250;      // 400 (150 + 250)<br>
+                          int sum3 = sum2 + sum2;     // 800 (400 + 400)<br>
+                          printf("%d\n", sum1);<br>
+                          printf("%d\n", sum2);<br>
+                          printf("%d\n", sum3);<br>
+                          return 0;
+                        }</code>
+                    C divides the operators into the following groups:
+                    </p>
+                    <ul>
+                        <li>Arithmetic operators</li>
+                        <li>Assignment operators</li>
+                        <li>Comparison operators</li>
+                        <li>Logical operators</li>
+                        <li>Bitwise operators</li>
+                    </ul>
+            </section>
+            <section class="main-section" id="arrays">
+                <header>C Arrays</header>
+                <p> <b>Arrays</b>
+                     are used to store multiple values in a single variable, instead of declaring separate variables for each value.
+                    
+                    To create an array, define the data type (like int) and specify the name of the array followed by square brackets [].
+                    
+                    To insert values to it, use a comma-separated list, inside curly braces:<br>
+                    <code>int myNumbers[] = {25, 50, 75, 100};</code>
+                    
+                    Arrays are used to store multiple values in a single variable, instead of declaring separate variables for each value.
+
+                    To create an array, define the data type (like int) and specify the name of the array followed by square brackets [].
+
+                    To insert values to it, use a comma-separated list, inside curly braces:
+                   <b>Change an Array Element</b><br>
+                    To change the value of a specific element, refer to the index number:<br>
+                    <code>
+                        #include &lt;stdio.h&gt;<br>
+
+                            int main() {<br>
+                              int myNumbers[] = {25, 50, 75, 100};<br>
+                              myNumbers[0] = 33;<br>
+                            
+                              printf("%d", myNumbers[0]);<br>
+                             
+                              return 0;<br>
+                            }
+                    </code>
+                    <b>Loop Through an Array</b><br>
+                    You can loop through the array elements with the for loop.
+
+                    The following example outputs all elements in the myNumbers array:<br>
+                    <code>
+                        #include &lt;stdio.h&gt;
+
+                            int main() {<br>
+                              int myNumbers[] = {25, 50, 75, 100};<br>
+                              int i;<br>
+                              
+                              for (i = 0; i < 4; i++) {<br>
+                                printf("%d\n", myNumbers[i]);
+                              }<br>
+                             
+                              return 0;<br>
+                            }
+                    </code>
+                    <b>Set Array Size</b>
+                    Another common way to create arrays, is to specify the size of the array, and add elements later:
+                </p>
+            </section>
+            <section class="main-section" id="sring">
+                <header>C Strings</header>
+                <p>
+                   <b> Strings</b>
+                   are used for storing text/characters.
+
+                   For example, "Hello World" is a string of characters.
+
+                   Unlike many other programming languages, C does not have a String type to easily create string variables. However, you can use the char type and create an array of characters to make a string in C:
+                   Note that you have to use double quotes.
+
+                   To output the string, you can use the printf() function together with the format specifier %s to tell C that we are now working with strings:<br>
+                   <code>#include &lt;stdio.h&gt;
+
+                    int main() {<br>
+                      char greetings[] = "Hello World!";<br>
+                      printf("%s", greetings);<br>
+                     
+                      return 0;<br>
+                    }</code>
+                   <b>Access Strings</b><br>
+                   Since strings are actually arrays in C, you can access a string by referring to its index number inside square brackets [].<br>
+                   This example prints the first character (0) in greetings:<br>
+                   <code>
+                    #include &lt;stdio.h&gt;
+
+                        int main() {<br>
+                          char greetings[] = "Hello World!";<br>
+                          printf("%c", greetings[0]);<br>
+                         
+                          return 0;<br>
+                        }
+                   </code>
+                   <b>Modify Strings</b><br>
+                   To change the value of a specific character in a string, refer to the index number, and use single quotes:<br>
+                   <code>#include &lt;stdio.h&gt;
+
+                    int main() {<br>
+                      char greetings[] = "Hello World!";<br>
+                      greetings[0] = 'J';<br>
+                      printf("%s", greetings);<br>
+                    
+                      return 0;<br>
+                    }</code>
+                   <b>Another Way Of Creating Strings</b><br>
+                   In the examples above, we used a "string literal" to create a string variable. This is the easiest way to create a string in C.
+
+                   You should also note that you can to create a string with a set of characters. This example will produce the same result as the one above:<br>
+                   <code>
+                    #include &lt;stdio.h&gt;
+
+                        int main() {<br>
+                          char greetings[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'};<br>
+                          char greetings2[] = "Hello World!";<br>
+                          
+                          printf("%s\n", greetings);<br>
+                          printf("%s\n", greetings2);<br>
+                          
+                          return 0;<br>
+                        }
+                   </code>
+                  <b> Differences</b>
+                   The difference between the two ways of creating strings, is that the first method is easier to write, and you do not have to include the \0 character, as C will do it for you.
+                   
+                   You should note that the size of both arrays is the same: They both have 13 characters (space also counts as a character by the way), including the \0 character:<br>
+                   <code>
+                    
+
+#include &lt;stdio.h&gt;
+​
+int main() {<br>
+  char greetings[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'};<br>
+  char greetings2[] = "Hello World!";<br>
+  
+  printf("%lu\n", sizeof(greetings));<br>
+  printf("%lu\n", sizeof(greetings2));<br>
+  
+  return 0;<br>
+}
+                   </code>
+                </p>
+            </section>
+            <section class="main-section" id="pointers">
+                <header>C Pointers</header>
+                <p>
+                   <b> Creating Pointers</b><br>
+                   You learned from the previous chapter, that we can get the memory address of a variable with the reference operator &:
+                   A pointer is a variable that stores the memory address of another variable as its value.
+
+                  A pointer variable points to a data type (like int) of the same type, and is created with the * operator. The address of the variable you're working with is assigned to the pointer:<br>
+                  <code>#include &lt;stdio.h&gt;
+
+                    int main() {<br>
+                      int myAge = 43;  // An int variable<br>
+                      int* ptr = &myAge;  // A pointer variable, with the name ptr, that stores the address of myAge<br>
+                    
+                      // Output the value of myAge (43)<br>
+                      printf("%d\n", myAge);<br>
+                    
+                      // Output the memory address of myAge (0x7ffe5367e044)<br>
+                      printf("%p\n", &myAge);<br>
+                    
+                      // Output the memory address of myAge with the pointer (0x7ffe5367e044)<br>
+                      printf("%p\n", ptr);<br>
+                    
+                      return 0;
+                    }</code>
+                </p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
